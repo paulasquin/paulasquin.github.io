@@ -7,13 +7,21 @@ title: "Home"
 ## Education
 
 ### CentraleSupélec - Paris
-### Ecole Centrale de Nantes
+**MSc in Artificial Intelligence and Computer Science**  
+<span style="color:blue"> 09/2018 - 04/2019</span>
+
+### **Ecole Centrale de Nantes**
+**MSc in Robotics**  
+<span style="color:blue"> 09/2016 - 04/2018</span>
 
 ## Experience
 
-### Artificial Intelligence and Robotics - Awabot Intelligence
+### Awabot Intelligence
+**Artificial Intelligence and Robotics** 
 
-### Computer Science and Robotics - Sherbrooke University
+### Sherbrooke University
+**Computer Science and Robotics**
+
 
 ## Projects
 
