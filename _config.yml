@@ -14,7 +14,8 @@ post_footer: true            # show previous and next links at the end of each p
 date_format: "%B %d, %Y"     # see http://shopify.github.io/liquid/filters/date/
 
 # Theme settings
-style: default               # choose between "default", "contrast" and "minimal"
+#style: default               # choose between "default", "contrast" and "minimal"
+style: contrast
 dark_theme: false            # enables dark mode
 
 navigation:                  # (optional) site navigation in the header
@@ -23,9 +24,9 @@ navigation:                  # (optional) site navigation in the header
   - about.md
 
 icons:                       # (optional) icons in the header, see http://fontawesome.com/icons
-  envelope: "mailto:"
-  github: "https://github.com"
-  rss: "/feed.xml"
+  #envelope: "mailto:"
+  github: "https://github.com/paulasquin"
+  #rss: "/feed.xml"
 
 comments:                    # embed disqus or isso comments
 #  disqus: ""
