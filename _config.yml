@@ -1,10 +1,10 @@
-title: "Paul Asquin - Personal Website"
+title: "Paul Asquin"
 author: "Paul Asquin"
 description: "Paul Asquin - Artificial Intelligence, Computer Science and Robotics Engineer"
 
 # Jekyll settings
 permalink: /:title/          # see https://jekyllrb.com/docs/permalinks/
-paginate: 2                  # number of articles per page, remove to disable pagination
+# paginate: 2                  # number of articles per page, remove to disable pagination
 excerpt_separator: "\n\n\n"  # indicates the end of the excerpt by two blank lines
 
 # Page settings
@@ -29,7 +29,7 @@ icons:                       # (optional) icons in the header, see http://fontaw
   linkedin: "https://www.linkedin.com/in/paulasquin"
   #rss: "/feed.xml"
 
-comments:                    # embed disqus or isso comments
+comments: true                    # embed disqus or isso comments
 #  disqus: ""
 #  isso: ""
 
