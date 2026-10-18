@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paul Asquin — Ingénieur en intelligence artificielle</title>
+  <meta name="description" content="Paul Asquin, ingénieur en intelligence artificielle et freelance : audit de stack IA, ingénierie IA et MLOps. Ses projets : propulseur ionique, SUWAVE, Alveo, Guardia.">
+  <meta name="theme-color" content="#04050c">
+  <link rel="canonical" href="https://paulasquin.com/">
+  <link rel="alternate" hreflang="fr" href="https://paulasquin.com/?lang=fr">
+  <link rel="alternate" hreflang="en" href="https://paulasquin.com/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://paulasquin.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://paulasquin.com/">
+  <meta property="og:title" content="Paul Asquin — Ingénieur en intelligence artificielle">
+  <meta property="og:description" content="Freelance en IA, et les projets que j'ai conçus : du propulseur ionique à l'analyse des poumons en réanimation.">
+  <meta property="og:image" content="https://paulasquin.com/assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>
+    // Pick the language before first paint: ?lang=, then the visitor's saved choice, then the browser languages.
+    (function () {
+      var ok = ['fr', 'en'], lang = null;
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        if (ok.indexOf(q) >= 0) { lang = q; localStorage.setItem('lang', q); }
+        else if (ok.indexOf(localStorage.getItem('lang')) >= 0) lang = localStorage.getItem('lang');
+      } catch (e) {}
+      if (!lang) {
+        var ls = navigator.languages || [navigator.language || ''];
+        for (var i = 0; i < ls.length && !lang; i++) { var b = String(ls[i]).slice(0, 2).toLowerCase(); if (ok.indexOf(b) >= 0) lang = b; }
+      }
+      document.documentElement.lang = lang || 'en';
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><radialGradient id='g'><stop offset='0' stop-color='%23f4f0ff'/><stop offset='.45' stop-color='%238b7bff'/><stop offset='1' stop-color='%236fd6ff' stop-opacity='0'/></radialGradient></defs><circle cx='32' cy='32' r='30' fill='url(%23g)'/><circle cx='32' cy='32' r='7' fill='%23fff'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Unbounded:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js"
+    }
+  }
+  </script>
+</head>
+<body class="is-loading">
+  <canvas id="field" class="field" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <nav class="topnav" aria-label="Navigation principale" data-i18n-aria="nav.aria">
+    <a href="#top" class="brand"><span class="brand-dot"></span>Paul Asquin</a>
+    <div class="nav-links">
+      <a href="#ia" data-i18n="nav.ia">Freelance IA</a>
+      <a href="#projets" data-i18n="nav.projects">Projets</a>
+      <a href="#apropos" data-i18n="nav.about">À propos</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Langue" data-i18n-aria="nav.lang">
+      <button type="button" data-lang="fr">FR</button><button type="button" data-lang="en">EN</button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section id="top" class="scene hero" data-shape="orb" data-side="1">
+      <div class="wrap">
+        <div class="hero-content">
+          <p class="eyebrow"><span class="pulse-dot"></span><span data-i18n="hero.eyebrow">Ingénieur IA · Freelance · Fondateur d'AI Diligence</span></p>
+          <h1 class="hero-title">
+            <span class="ht-line"><span class="ht-word">Paul</span></span>
+            <span class="ht-line"><span class="ht-word ht-glow">Asquin</span></span>
+          </h1>
+          <p class="hero-sub" data-i18n="hero.sub">Je conçois, j'audite et je fais tourner des systèmes d'intelligence artificielle. Ici, les projets qui m'ont formé : un propulseur ionique sous cloche à vide, une aile solaire qui se pose sur les lacs du Québec, et l'analyse des poumons en réanimation.</p>
+          <div class="hero-cta">
+            <a href="#projets" class="btn btn-primary magnetic" data-i18n="hero.cta1">Voir les projets</a>
+            <a href="#ia" class="btn btn-ghost magnetic" data-i18n="hero.cta2">Travailler avec moi</a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span></span><i data-i18n="hero.scroll">Défiler</i></div>
+    </section>
+
+    <!-- Freelance AI -->
+    <section id="ia" class="scene" data-shape="net" data-side="-1">
+      <div class="wrap wrap-right">
+        <div class="card reveal">
+          <p class="kicker" data-i18n="ia.k">Aujourd'hui · Freelance</p>
+          <h2 class="title" data-i18n="ia.t">Intelligence artificielle, <em>du prototype à la production</em></h2>
+          <p class="lede" data-i18n="ia.p">Fort d'une expérience de Head of AI en vision et en langage et de CTO de Guardia, j'accompagne entreprises et investisseurs sur leurs projets d'IA, sous la bannière d'AI Diligence.</p>
+          <div class="services">
+            <div class="service">
+              <span class="svc-num">01</span>
+              <h3 data-i18n="ia.s1.t">Ingénierie IA &amp; MLOps</h3>
+              <p data-i18n="ia.s1.p">Modèles de vision et de langage, pipelines d'inférence, déploiement et suivi en production.</p>
+            </div>
+            <div class="service">
+              <span class="svc-num">02</span>
+              <h3 data-i18n="ia.s2.t">Due diligence de stack IA</h3>
+              <p data-i18n="ia.s2.p">Pour un investissement : le produit est-il prêt, les modèles reproductibles, les coûts tenables, l'équipe solide ?</p>
+            </div>
+            <div class="service">
+              <span class="svc-num">03</span>
+              <h3 data-i18n="ia.s3.t">Pilotage d'équipes et de projets IA</h3>
+              <p data-i18n="ia.s3.p">Cadrer, recruter, prioriser, et livrer un projet d'IA qui sert vraiment le métier.</p>
+            </div>
+          </div>
+          <a class="btn btn-primary magnetic" href="https://aidiligence.eu" target="_blank" rel="noopener"><span data-i18n="ia.cta">Découvrir AI Diligence</span><span class="arrow">↗</span></a>
+        </div>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span data-i18n="mq.1">Coûts cloud et auto-hébergement</span><b>✦</b>
+          <span data-i18n="mq.2">Latence d'inférence</span><b>✦</b>
+          <span data-i18n="mq.3">Qualité du code</span><b>✦</b>
+          <span data-i18n="mq.4">Efficacité des modèles</span><b>✦</b>
+          <span data-i18n="mq.5">Prompt engineering</span><b>✦</b>
+          <span data-i18n="mq.6">Benchmark de modèles</span><b>✦</b>
+          <span data-i18n="mq.7">Architecture</span><b>✦</b>
+          <span data-i18n="mq.8">Passage à l'échelle</span><b>✦</b>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects intro + timeline -->
+    <section id="projets" class="scene scene-short" data-shape="galaxy" data-side="0">
+      <div class="wrap">
+        <div class="intro reveal">
+          <p class="kicker" data-i18n="pj.k">Projets</p>
+          <h2 class="title title-xl" data-i18n="pj.t">Du vide spatial <em>aux soins intensifs</em></h2>
+          <p class="lede center" data-i18n="pj.p">Chaque projet a son propre site, raconté en 3D à partir des documents, des mesures et des pièces d'origine.</p>
+        </div>
+        <ol class="timeline reveal">
+          <li><a href="#ionique"><span class="tl-year">2014–2016</span><span class="tl-name" data-i18n="tl.1">Propulseur ionique</span></a></li>
+          <li><a href="#suwave"><span class="tl-year">2017</span><span class="tl-name">SUWAVE</span></a></li>
+          <li><a href="#ia"><span class="tl-year">2023</span><span class="tl-name">AI Diligence</span></a></li>
+          <li><a href="#alveo"><span class="tl-year">2025–2026</span><span class="tl-name">Alveo</span></a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Ion thruster -->
+    <section id="ionique" class="scene project" data-shape="ion" data-side="1" style="--accent:#6fd6ff;--accent2:#8b7bff">
+      <div class="wrap">
+        <article class="card reveal">
+          <p class="kicker"><span class="idx">01</span><span data-i18n="ion.k">TIPE de classe préparatoire · 2014 — 2016</span></p>
+          <h2 class="title"><span data-i18n="ion.t1">Propulseur</span> <em data-i18n="ion.t2">ionique</em></h2>
+          <p class="lede" data-i18n="ion.p">Concevoir, imprimer en 3D et mesurer un propulseur électrostatique à grille pour nanosatellite, sous la cloche à vide d'un lycée. Le site rejoue le principe, le prototype tiré des fichiers SolidWorks d'origine et dix expériences de mesure.</p>
+          <dl class="kpis">
+            <div><dt data-i18n="ion.k1">poussée mesurée</dt><dd><span data-count="6.7" data-dec="1">6,7</span><small> µN</small></dd></div>
+            <div><dt data-i18n="ion.k2">tension</dt><dd><span data-count="22">22</span><small> kV</small></dd></div>
+            <div><dt data-i18n="ion.k3">impulsion spécifique</dt><dd><span data-count="36000">36 000</span><small> s</small></dd></div>
+          </dl>
+          <a class="preview" href="https://ionic.paulasquin.com" target="_blank" rel="noopener">
+            <img src="assets/img/ionic.jpg" alt="Le site du propulseur ionique : un CubeSat au-dessus de la Terre de nuit" data-i18n-alt="ion.alt" loading="lazy" width="1200" height="630">
+            <span class="preview-cta"><span data-i18n="cta.visit">Visiter le site</span> <b>ionic.paulasquin.com ↗</b></span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- SUWAVE -->
+    <section id="suwave" class="scene project" data-shape="wave" data-side="-1" style="--accent:#ffb37a;--accent2:#ffd2a6">
+      <div class="wrap wrap-right">
+        <article class="card reveal">
+          <p class="kicker"><span class="idx">02</span><span data-i18n="sw.k">Stage · Sherbrooke, Québec · été 2017</span></p>
+          <h2 class="title"><span data-i18n="sw.t1">SUWAVE,</span> <em data-i18n="sw.t2">prévoir la dérive</em></h2>
+          <p class="lede" data-i18n="sw.p">SUWAVE est une aile volante solaire qui se pose sur les lacs pour recharger ses batteries. Au 3IT de l'Université de Sherbrooke, j'ai mesuré à quelle vitesse le vent la fait dériver et écrit le programme qui choisit où la poser pour qu'elle reste sur l'eau pendant toute sa recharge.</p>
+          <dl class="kpis">
+            <div><dt data-i18n="sw.k1">de la vitesse du vent</dt><dd><span data-count="5">5</span><small> %</small></dd></div>
+            <div><dt data-i18n="sw.k2">de recharge en plein soleil</dt><dd><span data-count="3">3</span><small> h</small></dd></div>
+            <div><dt data-i18n="sw.k3">essais de dérive sur lac</dt><dd><span data-count="4">4</span></dd></div>
+          </dl>
+          <a class="preview" href="https://suwave.paulasquin.com" target="_blank" rel="noopener">
+            <img src="assets/img/suwave.jpg" alt="Le site SUWAVE : un lac du Québec au coucher du soleil" data-i18n-alt="sw.alt" loading="lazy" width="1200" height="630">
+            <span class="preview-cta"><span data-i18n="cta.visit">Visiter le site</span> <b>suwave.paulasquin.com ↗</b></span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Alveo -->
+    <section id="alveo" class="scene project" data-shape="lung" data-side="1" style="--accent:#4fe0c0;--accent2:#ff7a8a">
+      <div class="wrap">
+        <article class="card reveal">
+          <p class="kicker"><span class="idx">03</span><span data-i18n="al.k">Logiciel médical · réanimation · 2025 — 2026</span></p>
+          <h2 class="title">Alveo, <em data-i18n="al.t">lire la ventilation</em></h2>
+          <p class="lede" data-i18n="al.p">Une plateforme web d'analyse des enregistrements de tomographie par impédance électrique (EIT) des patients de réanimation. Elle lit les fichiers Dräger et SenTec, reconstruit les images du thorax, laisse le clinicien choisir ses cycles respiratoires, puis calcule surdistension et collapsus pour trouver la meilleure PEP d'un essai décrémental, selon la méthode de Costa (2009).</p>
+          <ul class="chips">
+            <li data-i18n="al.c1">Reconstruction d'images EIT</li>
+            <li data-i18n="al.c2">Sélection des cycles</li>
+            <li data-i18n="al.c3">Surdistension / collapsus</li>
+            <li data-i18n="al.c4">Interface web · CLI · API Python</li>
+          </ul>
+          <p class="soon"><span class="pulse-dot"></span><span data-i18n="al.soon">Le site d'Alveo est en préparation.</span></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Also -->
+    <section id="aussi" class="scene scene-short" data-shape="galaxy" data-side="0">
+      <div class="wrap">
+        <div class="intro reveal">
+          <p class="kicker" data-i18n="also.k">Et aussi</p>
+          <h2 class="title" data-i18n="also.t">Produits <em>et applications</em></h2>
+        </div>
+        <div class="tiles">
+          <a class="tile reveal" href="https://guardiapool.com" target="_blank" rel="noopener">
+            <img class="tile-photo" src="assets/img/guardia.webp" alt="" loading="lazy">
+            <span class="tile-body">
+              <span class="tile-tag" data-i18n="g.tag">CTO · vision embarquée</span>
+              <span class="tile-name">Guardia</span>
+              <span class="tile-text" data-i18n="g.p">Une alarme de piscine périmétrique : une caméra autonome et une IA embarquée reconnaissent enfants et adultes, et préviennent quand un enfant s'approche seul de l'eau. Aucune donnée ne sort de chez vous.</span>
+              <span class="tile-link">guardiapool.com ↗</span>
+            </span>
+          </a>
+          <a class="tile reveal" href="https://revela.aidiligence.eu" target="_blank" rel="noopener">
+            <img class="tile-icon" src="assets/img/revela.png" alt="" loading="lazy">
+            <span class="tile-body">
+              <span class="tile-tag" data-i18n="r.tag">Application Android</span>
+              <span class="tile-name">Revela</span>
+              <span class="tile-text" data-i18n="r.p">Retoucher ses photos sur Android avec les réglages de Lightroom : mêmes curseurs, rendu proche, presets .xmp. Tout est traité sur le téléphone.</span>
+              <span class="tile-link">revela.aidiligence.eu ↗</span>
+            </span>
+          </a>
+          <a class="tile reveal" href="https://siflo.aidiligence.eu" target="_blank" rel="noopener">
+            <img class="tile-icon" src="assets/img/siflo.png" alt="" loading="lazy">
+            <span class="tile-body">
+              <span class="tile-tag" data-i18n="s.tag">Application Android</span>
+              <span class="tile-name">Siflo</span>
+              <span class="tile-text" data-i18n="s.p">Les signaux de sifflet et les messages d'un groupe, de téléphone à téléphone, même sans réseau : canyon, escalade, spéléo.</span>
+              <span class="tile-link">siflo.aidiligence.eu ↗</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="apropos" class="scene" data-shape="orb" data-side="-1">
+      <div class="wrap wrap-right">
+        <div class="card about reveal">
+          <img class="portrait" src="assets/img/paul-asquin.jpg" alt="Paul Asquin" loading="lazy" width="601" height="800">
+          <div>
+            <p class="kicker" data-i18n="ab.k">À propos</p>
+            <h2 class="title" data-i18n="ab.t">Ingénieur, <em>du modèle au matériel</em></h2>
+            <p data-i18n="ab.p1">Diplômé de Centrale Paris, titulaire de deux MSc, l'un en intelligence artificielle et informatique, l'autre en robotique, j'ai été Head of AI en vision et en traitement du langage, et je suis CTO de Guardia.</p>
+            <p data-i18n="ab.p2">J'ai créé AI Diligence en 2023 pour mettre cette expérience et mon réseau au service d'autres équipes. Entre deux missions, je continue de construire : des applications, des outils, et ces sites qui racontent mes anciens projets.</p>
+            <ul class="facts">
+              <li><b>Centrale Paris</b><span data-i18n="ab.f1">ingénieur</span></li>
+              <li><b>2 MSc</b><span data-i18n="ab.f2">IA &amp; informatique · robotique</span></li>
+              <li><b>Head of AI</b><span data-i18n="ab.f3">vision &amp; langage</span></li>
+              <li><b>CTO</b><span>Guardia</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="scene contact" data-shape="galaxy" data-side="0">
+      <div class="wrap">
+        <div class="intro reveal">
+          <p class="kicker" data-i18n="ct.k">Contact</p>
+          <h2 class="title title-xl" data-i18n="ct.t">Un projet d'IA <em>à construire ou à évaluer ?</em></h2>
+          <p class="lede center" data-i18n="ct.p">Parlons du périmètre. Je réponds sur LinkedIn ou par e-mail.</p>
+          <div class="hero-cta center">
+            <a class="btn btn-primary magnetic" href="https://www.linkedin.com/in/paulasquin" target="_blank" rel="noopener"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-12.4-58.4-43.4-58.4-23.7 0-37.8 15.9-44 31.3-2.3 5.5-2.9 13.2-2.9 20.9V448h-92.8s1.2-241.1 0-266.1h92.8v37.7c12.3-19 34.4-46.1 83.7-46.1 61.1 0 106.9 39.9 106.9 125.7V448z"/></svg><span>LinkedIn</span></a>
+            <a class="btn btn-ghost magnetic" href="mailto:contact@aidiligence.eu">contact@aidiligence.eu</a>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <span>© Paul Asquin</span>
+        <span><a href="https://aidiligence.eu" target="_blank" rel="noopener">AI Diligence</a> · <a href="https://ionic.paulasquin.com" target="_blank" rel="noopener" data-i18n="tl.1">Propulseur ionique</a> · <a href="https://suwave.paulasquin.com" target="_blank" rel="noopener">SUWAVE</a></span>
+      </footer>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
