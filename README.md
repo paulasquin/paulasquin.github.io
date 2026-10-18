@@ -22,6 +22,6 @@ Add a `<section class="scene project" data-shape="…" data-side="±1" style="--
 
 ## Deployment
 
-GitHub Pages, `main` branch, repository root; the domain is declared by `CNAME`. DNS at OVH: apex `A`/`AAAA` records to GitHub Pages, `www` CNAME to `paulasquin.github.io.`.
+GitHub Pages, `main` branch, repository root; the domain is declared by `CNAME`. DNS at OVH: apex `A`/`AAAA` records to GitHub Pages, `www` CNAME to `paulasquin.github.io.` — set by `tools/ovh_dns.py` (`bws-env run ovh -- uv run -q --with ovh python -I tools/ovh_dns.py`). Once the certificate is `approved` (`gh api repos/paulasquin/paulasquin-site/pages --jq .https_certificate.state`), enforce HTTPS: `gh api -X PUT repos/paulasquin/paulasquin-site/pages -F https_enforced=true`.
 
 Particles are written premultiplied (alpha = brightest channel) with One/One blending, so they add light over the CSS background of the page.
