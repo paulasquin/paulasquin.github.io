@@ -70,7 +70,7 @@ function reveals() {
       opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', clearProps: 'transform',
       scrollTrigger: { trigger: el, start: 'top 88%', once: true },
     });
-    const kids = $$('.kicker, .title, .lede, .service, .kpis > div, .chips li, .preview, .soon, .facts li, .timeline li, .hero-cta', el);
+    const kids = $$('.kicker, .title, .lede, .service, .kpis > div, .chips li, .preview, .soon, .facts li, .timeline li, .hero-cta, .card > .link, .links, .media li', el);
     if (kids.length) {
       gsap.fromTo(kids, { opacity: 0, y: 18, clipPath: 'inset(0 0 100% 0)' }, {
         opacity: 1, y: 0, clipPath: 'inset(0 0 -20% 0)', duration: 1, ease: 'power3.out', stagger: 0.07,

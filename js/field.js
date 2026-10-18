@@ -5,7 +5,7 @@
 // forward pass, breathing, orbits.
 import * as THREE from 'three';
 
-const K = { STILL: 0, PLUME: 1, WAVE: 2, EDGE: 3, NODE: 4, BREATH: 5, ORBIT: 6, WING: 7 };
+const K = { STILL: 0, PLUME: 1, WAVE: 2, EDGE: 3, NODE: 4, BREATH: 5, ORBIT: 6, WING: 7, SCAN: 8, FILM: 9, AUDIO: 10, PATCH: 11, IRIS: 12 };
 
 /* ---------------- shapes ---------------- */
 
@@ -209,7 +209,215 @@ function lung(n) {
   return s;
 }
 
-const BUILDERS = { orb, galaxy, net, ion, wave, lung };
+
+// Meero: a lens seen from the front, its iris twisting open and shut.
+function lens(n) {
+  const s = new Shape(n), r = rng(7);
+  const steel = C('#9fb4dc'), blade = C('#8c93c8'), edge = C('#ffd2a6'), glint = C('#6fd6ff'), warm = C('#ffb37a');
+  const R = 1.45, iris = 0.42, blades = 7;
+  const nBarrel = Math.floor(n * 0.24), nBlades = Math.floor(n * 0.5);
+  for (let i = 0; i < nBarrel; i++) {
+    const a = r() * Math.PI * 2, u = r();
+    if (u < 0.35) s.push(Math.cos(a) * R, Math.sin(a) * R, -r() * 0.7, K.STILL, 0, steel.clone().multiplyScalar(0.25 + r() * 0.3));
+    else if (u < 0.75) {
+      const rr = [R, R - 0.06, 1.3][Math.floor(r() * 3)];
+      s.push(Math.cos(a) * rr, Math.sin(a) * rr, 0, K.STILL, 0, steel.clone().multiplyScalar(0.5 + r() * 0.4));
+    } else {
+      const k = Math.round(a / (Math.PI * 2) * 90) / 90 * Math.PI * 2, rr = 1.32 + r() * 0.08; // knurled focus ring
+      s.push(Math.cos(k) * rr, Math.sin(k) * rr, 0.02, K.STILL, 0, edge.clone().multiplyScalar(0.3 + r() * 0.3));
+    }
+  }
+  // Blades: each edge is a straight line tangent to the opening, the shading follows it.
+  const sector = (Math.PI * 2) / blades, edgeAngle = (rr) => Math.atan2(Math.sqrt(Math.max(0, rr * rr - iris * iris)), iris);
+  for (let i = 0; i < nBlades; i++) {
+    if (r() < 0.28) {
+      const k = Math.floor(r() * blades), a = k * sector, t = r() * Math.sqrt(1.25 ** 2 - iris ** 2);
+      const x = iris * Math.cos(a) - t * Math.sin(a), y = iris * Math.sin(a) + t * Math.cos(a);
+      s.push(x, y, -0.14, K.IRIS, r(), edge.clone().multiplyScalar(0.8 + r() * 0.5));
+      continue;
+    }
+    const rr = iris + Math.sqrt(r()) * (1.25 - iris), a = r() * Math.PI * 2;
+    const f = ((((a - edgeAngle(rr)) / sector) % 1) + 1) % 1;
+    s.push(Math.cos(a) * rr, Math.sin(a) * rr, -0.15 - f * 0.04, K.IRIS, r(), blade.clone().multiplyScalar(0.1 + f * f * 0.5 + r() * 0.08));
+  }
+  while (!s.full) {
+    const rr = Math.sqrt(r()) * iris, a = r() * Math.PI * 2, x = Math.cos(a) * rr, y = Math.sin(a) * rr;
+    const g = Math.exp(-((x + 0.12) ** 2 + (y - 0.14) ** 2) * 30);
+    s.push(x, y, -0.3, K.IRIS, r(), lerpC(glint, warm, (y + iris) / (2 * iris)).multiplyScalar(0.15 + r() * 0.2 + g * 1.2));
+  }
+  return s;
+}
+
+// Baracoda: a patch of skin cells, a lesion glowing under UV, a scanning ring.
+function skin(n) {
+  const s = new Shape(n), r = rng(8);
+  const tissue = C('#ffb8a6'), uv = C('#a78bff'), lesion = C('#ff4fd8'), core = C('#3b1d6e');
+  const R = 1.75, cell = 0.21, seeds = [];
+  for (let gx = -10; gx <= 10; gx++) for (let gy = -10; gy <= 10; gy++) seeds.push([(gx + (r() - 0.5) * 0.8) * cell, (gy + (r() - 0.5) * 0.8) * cell]);
+  const bulge = (x, y) => 0.35 * (1 - (x * x + y * y) / (R * R));
+  const lesionR = (a) => 0.38 * (1 + 0.22 * Math.sin(3 * a) + 0.12 * Math.sin(5 * a + 1));
+  const nLesion = Math.floor(n * 0.16), nRing = Math.floor(n * 0.08);
+  for (let i = 0; i < nLesion; i++) {
+    const a = r() * Math.PI * 2, rr = Math.sqrt(r()) * lesionR(a), x = Math.cos(a) * rr, y = Math.sin(a) * rr;
+    s.push(x, y, bulge(x, y) + 0.02, K.STILL, 0, lerpC(lesion, core, rr / lesionR(a)).multiplyScalar(0.6 + r() * 0.6));
+  }
+  for (let i = 0; i < nRing; i++) {
+    const a = r() * Math.PI * 2, rr = 1 + (r() - 0.5) * 0.04;
+    s.push(Math.cos(a) * rr, Math.sin(a) * rr, 0.3, K.SCAN, 0, uv.clone().multiplyScalar(0.6 + r() * 0.5));
+  }
+  while (!s.full) {
+    const a = r() * Math.PI * 2, rr = Math.sqrt(r()) * R, x = Math.cos(a) * rr, y = Math.sin(a) * rr;
+    let d1 = 9, d2 = 9;
+    for (const [sx, sy] of seeds) {
+      const d = Math.hypot(x - sx, y - sy);
+      if (d < d1) { d2 = d1; d1 = d; } else if (d < d2) d2 = d;
+    }
+    const wall = d2 - d1 < 0.022;
+    if (!wall && r() > 0.14) continue;
+    const fade = 1 - (rr / R) ** 3;
+    s.push(x, y, bulge(x, y), K.STILL, 0, tissue.clone().multiplyScalar((wall ? 0.4 : 0.14) * fade + r() * 0.08));
+  }
+  return s;
+}
+
+// AIVE: a film strip sliding along a curved screen, its soundtrack below.
+const FILM_R = 3.2, FILM_SPAN = 0.95;
+function film(n) {
+  const s = new Shape(n), r = rng(9);
+  const strip = C('#2b2f55'), hole = C('#efeaff'), wave0 = C('#ff7a8a'), wave1 = C('#ffb37a');
+  const palettes = [['#ffb37a', '#3b3f8f'], ['#6fd6ff', '#1f3b5a'], ['#ff7a8a', '#2a1f4f'], ['#4fe0c0', '#1a3a3a'], ['#ffd2a6', '#5a3b2f'], ['#a78bff', '#1d1d4a']].map(([a, b]) => [C(a), C(b)]);
+  const frames = 8, nWave = Math.floor(n * 0.16);
+  const place = (sArc, y) => {
+    const phi = sArc * FILM_SPAN;
+    return [Math.sin(phi) * FILM_R, y, (Math.cos(phi) - 1) * FILM_R + 0.6];
+  };
+  for (let i = 0; i < nWave; i++) {
+    const bars = 64, b = Math.floor(r() * bars), x = -2.4 + (4.8 * (b + 0.5)) / bars;
+    const h = 0.08 + 0.32 * Math.abs(Math.sin(b * 0.37) * Math.sin(b * 0.11 + 1)) + r() * 0.02, v = r() * 2 - 1;
+    s.push(x, -1.15 + v * h, 0.4, K.AUDIO, b / bars, lerpC(wave0, wave1, b / bars).multiplyScalar(0.5 + r() * 0.5));
+  }
+  while (!s.full) {
+    const u = r(), sArc = r() * 2 - 1, prm = (sArc + 1) / 2;
+    let y, c;
+    if (u < 0.3) {          // perforations and edges
+      y = (r() < 0.5 ? -1 : 1) * (0.56 + (r() < 0.5 ? 0 : 0.08));
+      const holeOn = ((prm * frames * 4) % 1) < 0.45 && Math.abs(Math.abs(y) - 0.56) < 0.01;
+      c = holeOn ? hole.clone().multiplyScalar(0.5 + r() * 0.3) : strip.clone().multiplyScalar(0.8 + r() * 0.5);
+    } else {                // the frames, each a small shot
+      y = (r() * 2 - 1) * 0.45;
+      const f = Math.floor(prm * frames), fx = (prm * frames) % 1;
+      if (fx < 0.05 || fx > 0.95) continue;
+      const [top, bottom] = palettes[f % palettes.length];
+      const sub = Math.exp(-(((fx - 0.5) * 2.2) ** 2 + ((y + 0.05) * 3.5) ** 2) * 1.5);
+      c = lerpC(bottom, top, (y + 0.45) / 0.9).multiplyScalar(0.35 + r() * 0.25 + sub * 0.6);
+    }
+    const [x, yy, z] = place(sArc, y);
+    s.push(x, yy, z, K.FILM, prm, c);
+  }
+  return s;
+}
+
+// Acolad: documents in several languages, linked by translation arcs.
+function docs(n) {
+  const s = new Shape(n), r = rng(10);
+  const paper = C('#cfd6ff'), inks = [C('#6fd6ff'), C('#a78bff'), C('#4fe0c0')], arcA = C('#6fd6ff'), arcB = C('#a78bff');
+  const W = 1.15, H = 1.55;
+  const pages = [-1, 0, 1].map((k) => ({ x: k * 1.45, z: -Math.abs(k) * 0.35, ry: -k * 0.32, y: k === 0 ? 0.08 : -0.04 }));
+  const put = (pg, u, v, kind, prm, c) => {
+    const cx = Math.cos(pg.ry), sx = Math.sin(pg.ry);
+    s.push(pg.x + u * cx, pg.y + v, pg.z - u * sx, kind, prm, c);
+  };
+  const nArc = Math.floor(n * 0.16), nEdge = Math.floor(n * 0.14);
+  const lines = pages.map(() => Array.from({ length: 13 }, (_, i) => ({ v: H / 2 - 0.2 - i * 0.105, len: i === 0 ? 0.55 : 0.55 + r() * 0.4 })));
+  for (let i = 0; i < nEdge; i++) {
+    const pg = pages[i % 3], t = r() * 2 * (W + H), p = t < W ? [t - W / 2, H / 2] : t < W + H ? [W / 2, H / 2 - (t - W)] : t < 2 * W + H ? [W / 2 - (t - W - H), -H / 2] : [-W / 2, -H / 2 + (t - 2 * W - H)];
+    put(pg, p[0], p[1], K.STILL, 0, paper.clone().multiplyScalar(0.25 + r() * 0.2));
+  }
+  for (let i = 0; i < nArc; i++) {
+    const a = Math.floor(r() * 3), b = (a + 1 + Math.floor(r() * 2)) % 3, t = r();
+    const pa = pages[Math.min(a, b)], pb = pages[Math.max(a, b)];
+    const p0 = new THREE.Vector3(pa.x, pa.y + H / 2 + 0.05, pa.z), p1 = new THREE.Vector3(pb.x, pb.y + H / 2 + 0.05, pb.z);
+    const mid = p0.clone().lerp(p1, 0.5).add(new THREE.Vector3(0, 0.55 + Math.abs(pb.x - pa.x) * 0.25, 0.2));
+    const q = p0.clone().multiplyScalar((1 - t) ** 2).addScaledVector(mid, 2 * t * (1 - t)).addScaledVector(p1, t * t);
+    s.push(q.x, q.y, q.z, K.EDGE, t, lerpC(arcA, arcB, t).multiplyScalar(0.3 + r() * 0.35));
+  }
+  while (!s.full) {
+    const k = Math.floor(r() * 3), ln = lines[k][Math.floor(r() * 13)], u = -W / 2 + 0.12 + r() * (W - 0.24) * ln.len;
+    const word = ((u + 2) * 9.3 + ln.v * 7) % 1 < 0.86;
+    if (!word) continue;
+    put(pages[k], u, ln.v + (r() - 0.5) * 0.025, K.STILL, 0, inks[k].clone().multiplyScalar(0.4 + r() * 0.45));
+  }
+  return s;
+}
+
+// Ocus: a photo cut into the patches a vision transformer reads.
+function patches(n) {
+  const s = new Shape(n), r = rng(11);
+  const skyTop = C('#2a2f6e'), skyLow = C('#ffb37a'), sun = C('#fff1dc'), hill = C('#1f5f5a'), hillLit = C('#4fe0c0');
+  const cols = 6, rows = 4, P = 0.5, gap = 0.07;
+  while (!s.full) {
+    const cx = Math.floor(r() * cols), cy = Math.floor(r() * rows);
+    const u = (cx + r()) / cols, v = (cy + r()) / rows;
+    const lx = (u * cols) % 1, ly = (v * rows) % 1;
+    const x = (cx - cols / 2) * (P + gap) + lx * P + gap / 2, y = (cy - rows / 2) * (P + gap) + ly * P + gap / 2;
+    const ground = 0.34 + 0.07 * Math.sin(u * 7.0) + 0.04 * Math.sin(u * 17 + 1);
+    let c;
+    if (v < ground) c = lerpC(hill, hillLit, Math.max(0, 1 - (ground - v) * 6) * (0.4 + u * 0.6));
+    else {
+      const d = Math.hypot((u - 0.66) * 1.5, v - 0.52);
+      c = d < 0.08 ? sun.clone() : lerpC(skyLow, skyTop, Math.min(1, (v - ground) * 1.9)).multiplyScalar(1 + Math.max(0, 0.25 - d) * 3);
+    }
+    const id = (cy * cols + cx) / (cols * rows);
+    s.push(x, y, 0, K.PATCH, id, c.multiplyScalar(0.7 + r() * 0.45));
+  }
+  return s;
+}
+
+// Guardia: a pool watched by a camera; the adult and the child it tells apart.
+function pool(n) {
+  const s = new Shape(n), r = rng(12);
+  const water = C('#2f7fd0'), glint = C('#bff0ff'), coping = C('#e9ecff'), cone = C('#a78bff'), adult = C('#4fe0c0'), child = C('#ff9a5a');
+  const L = 1.5, Wd = 0.8, deck = -0.42;
+  const nEdge = Math.floor(n * 0.12), nCone = Math.floor(n * 0.12), nPeople = Math.floor(n * 0.14);
+  for (let i = 0; i < nEdge; i++) {
+    const t = r() * 4 * (L + Wd), p = t < 2 * L ? [t - L, -Wd] : t < 2 * L + 2 * Wd ? [L, t - 2 * L - Wd] : t < 4 * L + 2 * Wd ? [L - (t - 2 * L - 2 * Wd), Wd] : [-L, Wd - (t - 4 * L - 2 * Wd)];
+    const down = r() < 0.35 ? r() * 0.45 : 0;
+    s.push(p[0], deck - down, p[1], K.STILL, 0, coping.clone().multiplyScalar(down ? 0.12 : 0.35 + r() * 0.25));
+  }
+  const cam = new THREE.Vector3(1.95, 0.95, -1.2), aim = new THREE.Vector3(0, deck, 0);
+  for (let i = 0; i < nCone; i++) {
+    const t = Math.pow(r(), 0.7), spread = new THREE.Vector3((r() - 0.5) * 3.6, 0, (r() - 0.5) * 2.2).multiplyScalar(t);
+    const p = cam.clone().lerp(aim, t).add(spread);
+    s.push(p.x, p.y, p.z, K.STILL, 0, cone.clone().multiplyScalar(t < 0.05 ? 1 : 0.08 + r() * 0.1));
+  }
+  const figure = (x, z, h, c, count) => {
+    const head = new THREE.Vector3(x, deck + h * 0.9, z), neck = new THREE.Vector3(x, deck + h * 0.8, z), hip = new THREE.Vector3(x, deck + h * 0.47, z);
+    const bones = [[neck, hip], [hip, new THREE.Vector3(x - h * 0.1, deck, z)], [hip, new THREE.Vector3(x + h * 0.1, deck, z)],
+      [neck, new THREE.Vector3(x - h * 0.2, deck + h * 0.5, z)], [neck, new THREE.Vector3(x + h * 0.2, deck + h * 0.5, z)]];
+    for (let i = 0; i < count; i++) {
+      if (r() < 0.25) {
+        const a = r() * Math.PI * 2, b = r() * Math.PI, rr = h * 0.09;
+        s.push(head.x + Math.sin(b) * Math.cos(a) * rr, head.y + Math.cos(b) * rr, head.z + Math.sin(b) * Math.sin(a) * rr, K.STILL, 0, c.clone().multiplyScalar(0.7 + r() * 0.3));
+      } else {
+        const [a, b] = bones[Math.floor(r() * bones.length)], t = r();
+        s.push(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t, a.z + (b.z - a.z) * t, K.STILL, 0, c.clone().multiplyScalar(0.6 + r() * 0.4));
+      }
+    }
+    for (let i = 0; i < count * 0.3; i++) {
+      const a = r() * Math.PI * 2, rr = h * 0.45;
+      s.push(x + Math.cos(a) * rr, deck, z + Math.sin(a) * rr, K.STILL, 0, c.clone().multiplyScalar(0.35));
+    }
+  };
+  figure(-1.15, -1.25, 1.05, adult, Math.floor(nPeople * 0.5));
+  figure(0.85, -1.08, 0.58, child, Math.floor(nPeople * 0.4));
+  while (!s.full) {
+    const x = (r() * 2 - 1) * (L - 0.03), z = (r() * 2 - 1) * (Wd - 0.03);
+    s.push(x, deck - 0.06, z, K.WAVE, r(), lerpC(water, glint, Math.pow(r(), 6)).multiplyScalar(0.3 + r() * 0.35));
+  }
+  return s;
+}
+
+const BUILDERS = { orb, galaxy, net, ion, wave, lung, lens, skin, film, docs, patches, pool };
 
 // How each shape is presented: tilt, and an optional slow sway.
 const VIEW = {
@@ -219,11 +427,19 @@ const VIEW = {
   ion: { rx: 0.22, ry: 0.62, rz: 0.05, scale: 1.05, sway: 0.2 },
   wave: { rx: 0.36, ry: -0.1, rz: 0, scale: 0.82 },
   lung: { rx: 0.08, ry: 0, rz: 0, scale: 1, sway: 0.4 },
+  lens: { rx: 0.2, ry: -0.45, rz: 0, scale: 1, sway: 0.25 },
+  skin: { rx: -0.35, ry: 0.35, rz: 0, scale: 1 },
+  film: { rx: 0.14, ry: 0, rz: 0, scale: 0.72 },
+  docs: { rx: 0.08, ry: -0.2, rz: 0, scale: 0.85, sway: 0.15 },
+  patches: { rx: -0.12, ry: 0.4, rz: 0.03, scale: 0.95, sway: 0.2 },
+  pool: { rx: 0.5, ry: -0.35, rz: 0, scale: 0.95, sway: 0.2 },
 };
 
 /* ---------------- shaders ---------------- */
 
 const vert = /* glsl */ `
+  #define FILM_R ${FILM_R.toFixed(2)}
+  #define FILM_SPAN ${FILM_SPAN.toFixed(2)}
   attribute vec4 aFrom;
   attribute vec4 aTo;
   attribute vec3 cFrom;
@@ -265,6 +481,24 @@ const vert = /* glsl */ `
     } else if (kind == 7.0) {     // wing: gentle bob and roll
       float roll = sin(uTime * 0.7) * 0.06;
       q.y += sin(uTime * 0.9) * 0.05 + q.x * roll;
+    } else if (kind == 8.0) {     // UV scan: a ring widening from the lesion
+      float t = fract(uTime * 0.28);
+      q.xy *= 0.25 + t * 1.25;
+      boost = (1.0 - t) * 1.8;
+    } else if (kind == 9.0) {     // film strip sliding along its curved screen
+      float s = fract(prm + uTime * 0.025) * 2.0 - 1.0, phi = s * FILM_SPAN;
+      q.x = sin(phi) * FILM_R;
+      q.z = (cos(phi) - 1.0) * FILM_R + 0.6;
+      boost = smoothstep(1.0, 0.8, abs(s));
+    } else if (kind == 10.0) {    // soundtrack bars
+      float amp = 0.3 + 0.7 * abs(sin(uTime * 2.6 + prm * 23.0) * sin(uTime * 1.3 + prm * 7.0));
+      q.y = -1.15 + (q.y + 1.15) * amp;
+    } else if (kind == 11.0) {    // patches float in and out of the image
+      q.z += sin(uTime * 1.1 + prm * 6.2832 * 3.0) * 0.12;
+    } else if (kind == 12.0) {    // iris: inner rings twist further
+      float a = sin(uTime * 0.6) * 0.3 * (1.3 - length(q.xy));
+      float c = cos(a), s = sin(a);
+      q.xy = mat2(c, -s, s, c) * q.xy;
     }
     return q;
   }
