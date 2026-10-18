@@ -24,6 +24,6 @@ Add a `<section class="scene exp" data-shape="…" data-side="±1" style="--acce
 
 ## Deployment
 
-GitHub Pages, `main` branch, repository root; the domain is declared by `CNAME`. DNS at OVH: apex `A`/`AAAA` records to GitHub Pages, `www` CNAME to `paulasquin.github.io.` — set by `tools/ovh_dns.py` (`bws-env run ovh -- uv run -q --with ovh python -I tools/ovh_dns.py`). Once the certificate is `approved` (`gh api repos/paulasquin/paulasquin-site/pages --jq .https_certificate.state`), enforce HTTPS: `gh api -X PUT repos/paulasquin/paulasquin-site/pages -F https_enforced=true`.
+GitHub Pages, `main` branch, repository root; the domain is declared by `CNAME`: `www.paulasquin.com` (GitHub redirects the apex to it). The apex as primary domain kept its certificate stuck at `new` for 10 hours on 2026-10-18 despite correct DNS and account-level domain verification; switching the primary to www got the certificate requested at once. DNS at OVH: apex `A`/`AAAA` records to GitHub Pages, `www` CNAME to `paulasquin.github.io.` — set by `tools/ovh_dns.py` (`bws-env run ovh -- uv run -q --with ovh python -I tools/ovh_dns.py`). Once the certificate is `approved` (`gh api repos/paulasquin/paulasquin-site/pages --jq .https_certificate.state`), enforce HTTPS: `gh api -X PUT repos/paulasquin/paulasquin-site/pages -F https_enforced=true`.
 
 Particles are written premultiplied (alpha = brightest channel) with One/One blending, so they add light over the CSS background of the page.
