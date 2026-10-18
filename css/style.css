@@ -91,7 +91,7 @@ main, .topnav { position: relative; z-index: 2; }
 .wrap-right { display: flex; justify-content: flex-end; }
 
 .kicker {
-  display: flex; align-items: center; gap: 12px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px;
   font: 500 11.5px/1.4 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
   margin: 0 0 18px;
 }
@@ -208,8 +208,12 @@ main, .topnav { position: relative; z-index: 2; }
 .timeline { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 64px auto 0; padding: 0; max-width: 980px; position: relative; }
 .timeline::before { content: ''; position: absolute; top: 7px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, #6fd6ff, #ffb37a, #8b7bff, #4fe0c0); transform: scaleX(var(--tl, 0)); transform-origin: left; }
 .timeline li { text-align: center; }
-#parcours .timeline { grid-template-columns: repeat(6, 1fr); max-width: 1180px; }
-#parcours .timeline::before { left: 8.33%; right: 8.33%; }
+#parcours .timeline { grid-template-columns: repeat(12, 1fr); max-width: 1240px; }
+#parcours .timeline::before { left: 4.17%; right: 4.17%; }
+#parcours .timeline a, #parcours .timeline .tl-item { padding: 0 2px; }
+#parcours .tl-name { font-size: 12.5px; }
+#parcours .tl-year { font-size: 10.5px; letter-spacing: .04em; }
+.timeline .tl-now a::before { background: var(--accent2); border-color: var(--accent2); box-shadow: 0 0 0 4px var(--bg), 0 0 18px var(--accent2); }
 .timeline .tl-item::before { border-style: dashed; }
 .timeline a, .timeline .tl-item { display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; padding: 0 8px; }
 .timeline a::before, .timeline .tl-item::before { content: ''; width: 15px; height: 15px; border-radius: 50%; background: var(--bg); border: 1px solid var(--fg); box-shadow: 0 0 0 4px var(--bg); transition: background .3s, box-shadow .3s; margin-bottom: 10px; }
@@ -288,7 +292,7 @@ main, .topnav { position: relative; z-index: 2; }
   .scene.project { min-height: 100vh; }
   .hero { justify-content: flex-end; padding-bottom: 96px; }
   .hero .hero-content { background: linear-gradient(transparent, rgba(4, 5, 12, .75) 22%); padding-top: 40px; }
-  .timeline, #parcours .timeline { grid-template-columns: repeat(2, 1fr); row-gap: 34px; }
+  .timeline, #parcours .timeline { grid-template-columns: repeat(3, 1fr); row-gap: 30px; }
   .tiles-2 { grid-template-columns: 1fr; }
   .media a { grid-template-columns: 44px 1fr 16px; }
   .media .m-kind { display: none; }

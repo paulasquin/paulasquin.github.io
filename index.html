@@ -55,7 +55,6 @@
     <div class="nav-links">
       <a href="#ia" data-i18n="nav.ia">Freelance IA</a>
       <a href="#parcours" data-i18n="nav.career">Parcours</a>
-      <a href="#projets" data-i18n="nav.projects">Projets</a>
       <a href="#apropos" data-i18n="nav.about">À propos</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
     </div>
@@ -84,13 +83,38 @@
       <div class="scroll-cue" aria-hidden="true"><span></span><i data-i18n="hero.scroll">Défiler</i></div>
     </section>
 
+    <!-- Career intro + timeline -->
+    <section id="parcours" class="scene scene-short" data-shape="galaxy" data-side="0">
+      <div class="wrap">
+        <div class="intro reveal">
+          <p class="kicker" data-i18n="cr.k">Parcours</p>
+          <h2 class="title title-xl" data-i18n="cr.t">Parcours <em>et projets</em></h2>
+          <p class="lede center" data-i18n="cr.p">Du propulseur ionique à la réanimation, de la retouche photo aux agents d'IA : les équipes, les produits et les projets qui ont forgé ma pratique, du plus récent au plus ancien.</p>
+        </div>
+        <ol class="timeline reveal">
+          <li><a href="#ionique"><span class="tl-year">2014–2016</span><span class="tl-name" data-i18n="tl.1">Propulseur ionique</span></a></li>
+          <li><a href="#suwave"><span class="tl-year">2017</span><span class="tl-name">SUWAVE</span></a></li>
+          <li><span class="tl-item"><span class="tl-year">2019</span><span class="tl-name">Airbus DS</span></span></li>
+          <li><a href="#meero"><span class="tl-year">2019–2021</span><span class="tl-name">Meero</span></a></li>
+          <li><a href="#guardia"><span class="tl-year">2020–2023</span><span class="tl-name">Guardia</span></a></li>
+          <li><a href="#baracoda"><span class="tl-year">2021–2022</span><span class="tl-name">Baracoda</span></a></li>
+          <li><a href="#aive"><span class="tl-year">2022–2024</span><span class="tl-name">AIVE</span></a></li>
+          <li><a href="#acolad"><span class="tl-year">2024</span><span class="tl-name">Acolad</span></a></li>
+          <li><a href="#ocus"><span class="tl-year">2025</span><span class="tl-name">Ocus</span></a></li>
+          <li><a href="#bivwak"><span class="tl-year">2025–2026</span><span class="tl-name">Bivwak!</span></a></li>
+          <li><a href="#alveo"><span class="tl-year">2025–2026</span><span class="tl-name">Alveo</span></a></li>
+          <li class="tl-now"><a href="#ia"><span class="tl-year" data-i18n="tl.now">aujourd'hui</span><span class="tl-name">AI Diligence</span></a></li>
+        </ol>
+      </div>
+    </section>
+
     <!-- Freelance AI -->
     <section id="ia" class="scene" data-shape="net" data-side="-1">
       <div class="wrap wrap-right">
         <div class="card reveal">
           <p class="kicker" data-i18n="ia.k">Aujourd'hui · Freelance</p>
           <h2 class="title" data-i18n="ia.t">Intelligence artificielle, <em>du prototype à la production</em></h2>
-          <p class="lede" data-i18n="ia.p">Head of AI d'AIVE, d'Acolad et d'Ocus, ancien CTO de Guardia : j'accompagne entreprises et investisseurs sur leurs projets d'IA, sous la bannière d'AI Diligence.</p>
+          <p class="lede" data-i18n="ia.p">Aujourd'hui freelance, j'accompagne entreprises et investisseurs sur leurs projets d'IA sous la bannière d'AI Diligence, après avoir été Head of AI d'AIVE, d'Acolad et d'Ocus, et CTO de Guardia.</p>
           <div class="services">
             <div class="service">
               <span class="svc-num">01</span>
@@ -125,46 +149,41 @@
       </div>
     </section>
 
-    <!-- Career intro + timeline -->
-    <section id="parcours" class="scene scene-short" data-shape="galaxy" data-side="0">
+    <!-- Alveo -->
+    <section id="alveo" class="scene project" data-shape="lung" data-side="1" style="--accent:#4fe0c0;--accent2:#ff7a8a">
       <div class="wrap">
-        <div class="intro reveal">
-          <p class="kicker" data-i18n="cr.k">Parcours</p>
-          <h2 class="title title-xl" data-i18n="cr.t">Sept ans d'IA <em>mise en production</em></h2>
-          <p class="lede center" data-i18n="cr.p">Data scientist, CTO, Head of AI : les équipes et les produits qui ont forgé ma pratique, de la retouche photo au montage vidéo, de la peau aux langues.</p>
-        </div>
-        <ol class="timeline reveal">
-          <li><span class="tl-item"><span class="tl-year">2019</span><span class="tl-name">Airbus Defence &amp; Space</span></span></li>
-          <li><a href="#meero"><span class="tl-year">2019–2021</span><span class="tl-name">Meero</span></a></li>
-          <li><a href="#baracoda"><span class="tl-year">2021–2022</span><span class="tl-name">Baracoda</span></a></li>
-          <li><a href="#guardia"><span class="tl-year">2020–2023</span><span class="tl-name">Guardia</span></a></li>
-          <li><a href="#aive"><span class="tl-year">2022–2024</span><span class="tl-name">AIVE</span></a></li>
-          <li><a href="#acolad"><span class="tl-year" data-i18n="tl.since">depuis 2023</span><span class="tl-name">Acolad · Ocus</span></a></li>
-        </ol>
+        <article class="card reveal">
+          <p class="kicker"><span class="idx">Lead AI</span><span data-i18n="al.k">Logiciel médical · réanimation · 2025 — 2026</span></p>
+          <h2 class="title">Alveo, <em data-i18n="al.t">lire la ventilation</em></h2>
+          <p class="lede" data-i18n="al.p">Une plateforme web d'analyse des enregistrements de tomographie par impédance électrique (EIT) des patients de réanimation. Elle lit les fichiers Dräger et SenTec, reconstruit les images du thorax, laisse le clinicien choisir ses cycles respiratoires, puis calcule surdistension et collapsus pour trouver la meilleure PEP d'un essai décrémental, selon la méthode de Costa (2009).</p>
+          <ul class="chips">
+            <li data-i18n="al.c1">Reconstruction d'images EIT</li>
+            <li data-i18n="al.c2">Sélection des cycles</li>
+            <li data-i18n="al.c3">Surdistension / collapsus</li>
+            <li data-i18n="al.c4">Interface web · CLI · API Python</li>
+          </ul>
+          <p class="soon"><span class="pulse-dot"></span><span data-i18n="al.soon">Le site d'Alveo est en préparation.</span></p>
+        </article>
       </div>
     </section>
 
-    <!-- Acolad -->
-    <section id="acolad" class="scene exp" data-shape="docs" data-side="1" style="--accent:#6fd6ff;--accent2:#a78bff">
-      <div class="wrap">
+    <!-- Bivwak -->
+    <section id="bivwak" class="scene exp" data-shape="agent" data-side="-1" style="--accent:#4fe0c0;--accent2:#6fd6ff">
+      <div class="wrap wrap-right">
         <article class="card reveal">
-          <p class="kicker"><span class="idx">Head of AI</span><span data-i18n="ac.k">Mission freelance · AI Diligence</span></p>
-          <h2 class="title">Acolad, <em data-i18n="ac.t">l'IA du multilingue</em></h2>
-          <p class="lede" data-i18n="ac.p">Pour ce groupe international de contenus multilingues, j'ai dirigé une équipe d'ingénieurs et de docteurs qui a conçu des systèmes d'IA d'analyse de texte, de synthèse, de questions-réponses et de traduction contextuelle, déployés à grande échelle dans le cloud. J'ai aussi développé une IA d'analyse documentaire hébergée dans un cloud européen sécurisé pour une institution française.</p>
-          <dl class="kpis">
-            <div><dt data-i18n="ac.k1">ingénieurs et docteurs</dt><dd><span data-count="7">7</span></dd></div>
-          </dl>
-          <ul class="chips"><li>RAG</li><li>LLM</li><li>AWS · Azure · Scaleway</li><li>Modal</li></ul>
-          <a class="link" href="https://www.acolad.com" target="_blank" rel="noopener">acolad.com ↗</a>
+          <p class="kicker"><span class="idx">Lead AI</span><span>2025 — 2026</span></p>
+          <h2 class="title">Bivwak!, <em data-i18n="bw.t">un agent sous haute sécurité</em></h2>
+          <p class="lede" data-i18n="bw.p">Pour Bivwak!, l'incubateur de start-up de BNP Paribas, j'ai audité la stack technique, puis conçu et développé une IA agentique augmentée par RAG et appel de fonctions, sous de fortes contraintes de sécurité : ingestion de PDF, de présentations, de pages web et de podcasts, découpage sémantique, enrichissement des passages. J'ai aussi formé les profils juniors et affiné le projet avec les experts métier.</p>
+          <ul class="chips"><li data-i18n="bw.c1">Agents</li><li>RAG</li><li data-i18n="bw.c3">Appel de fonctions</li><li>LangChain</li><li>AWS</li></ul>
         </article>
       </div>
     </section>
 
     <!-- Ocus -->
-    <section id="ocus" class="scene exp" data-shape="patches" data-side="-1" style="--accent:#ffb37a;--accent2:#4fe0c0">
-      <div class="wrap wrap-right">
+    <section id="ocus" class="scene exp" data-shape="patches" data-side="1" style="--accent:#ffb37a;--accent2:#4fe0c0">
+      <div class="wrap">
         <article class="card reveal">
-          <p class="kicker"><span class="idx">Head of AI</span><span data-i18n="oc.k">Mission freelance · AI Diligence</span></p>
+          <p class="kicker"><span class="idx">Head of AI</span><span>2025</span></p>
           <h2 class="title">Ocus, <em data-i18n="oc.t">l'image augmentée</em></h2>
           <p class="lede" data-i18n="oc.p">Chez cette entreprise de photo et de vidéo, j'ai dirigé l'équipe IA qui a conçu des outils pour analyser, générer et retoucher images et vidéos, avec de l'IA agentique et des vision transformers. J'ai moi-même créé, entraîné et déployé de nouveaux modèles, et présenté notre expertise aux clients.</p>
           <dl class="kpis">
@@ -172,6 +191,22 @@
           </dl>
           <ul class="chips"><li>Vision transformers</li><li data-i18n="oc.c2">Agents</li><li>LLM · RAG</li><li>AWS · Modal</li></ul>
           <a class="link" href="https://www.ocus.com" target="_blank" rel="noopener">ocus.com ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Acolad -->
+    <section id="acolad" class="scene exp" data-shape="docs" data-side="-1" style="--accent:#6fd6ff;--accent2:#a78bff">
+      <div class="wrap wrap-right">
+        <article class="card reveal">
+          <p class="kicker"><span class="idx">Head of AI</span><span>2024</span></p>
+          <h2 class="title">Acolad, <em data-i18n="ac.t">l'IA du multilingue</em></h2>
+          <p class="lede" data-i18n="ac.p">Pour ce groupe international de contenus multilingues, j'ai dirigé une équipe d'ingénieurs et de docteurs qui a conçu des systèmes d'IA d'analyse de texte, de synthèse, de questions-réponses et de traduction contextuelle, déployés à grande échelle dans le cloud. J'ai aussi développé une IA d'analyse documentaire hébergée dans un cloud européen sécurisé pour une institution française.</p>
+          <dl class="kpis">
+            <div><dt data-i18n="ac.k1">ingénieurs et docteurs</dt><dd><span data-count="7">7</span></dd></div>
+          </dl>
+          <ul class="chips"><li>RAG</li><li>LLM</li><li>AWS · Azure · Scaleway</li><li>Modal</li></ul>
+          <a class="link" href="https://www.acolad.com" target="_blank" rel="noopener">acolad.com ↗</a>
         </article>
       </div>
     </section>
@@ -193,9 +228,22 @@
       </div>
     </section>
 
-    <!-- Guardia -->
-    <section id="guardia" class="scene exp" data-shape="pool" data-side="-1" style="--accent:#4fe0c0;--accent2:#6fd6ff">
+    <!-- Baracoda -->
+    <section id="baracoda" class="scene exp" data-shape="skin" data-side="-1" style="--accent:#ff4fd8;--accent2:#a78bff">
       <div class="wrap wrap-right">
+        <article class="card reveal">
+          <p class="kicker"><span class="idx" data-i18n="bc.idx">Senior data scientist vision · Lead MLOps</span><span>2021 — 2022</span></p>
+          <h2 class="title">Baracoda, <em data-i18n="bc.t">lire la peau</em></h2>
+          <p class="lede" data-i18n="bc.p">J'ai conçu et développé un système d'IA d'analyse de la peau pour des appareils de santé : détecter le mélanome et suivre l'évolution d'autres affections cutanées sous lumière UV. J'ai défini la stratégie MLOps, le déploiement sur AWS, et noué des partenariats avec des dermatologues.</p>
+          <ul class="chips"><li data-i18n="bc.c1">Détection du mélanome</li><li data-i18n="bc.c2">Lumière UV</li><li>MLOps</li><li>AWS · Kubernetes</li></ul>
+          <a class="link" href="https://baracoda.com" target="_blank" rel="noopener">baracoda.com ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Guardia -->
+    <section id="guardia" class="scene exp" data-shape="pool" data-side="1" style="--accent:#4fe0c0;--accent2:#6fd6ff">
+      <div class="wrap">
         <article class="card reveal">
           <p class="kicker"><span class="idx" data-i18n="gu.idx">Cofondateur &amp; CTO</span><span>2020 — 2023</span></p>
           <h2 class="title">Guardia, <em data-i18n="gu.t">veiller sur la piscine</em></h2>
@@ -205,19 +253,6 @@
           </dl>
           <ul class="chips"><li data-i18n="gu.c1">IA embarquée</li><li data-i18n="gu.c2">Caméra stéréo</li><li data-i18n="gu.c3">Estimation de pose</li></ul>
           <span class="links"><a class="link" href="https://guardiapool.com" target="_blank" rel="noopener">guardiapool.com ↗</a><a class="link" href="https://tribunedelyon.fr/sciences-innovation/lobjet-de-la-semaine-guardia-la-camera-de-piscine-anti-noyade/" target="_blank" rel="noopener" data-i18n="gu.l">Article de presse ↗</a></span>
-        </article>
-      </div>
-    </section>
-
-    <!-- Baracoda -->
-    <section id="baracoda" class="scene exp" data-shape="skin" data-side="1" style="--accent:#ff4fd8;--accent2:#a78bff">
-      <div class="wrap">
-        <article class="card reveal">
-          <p class="kicker"><span class="idx" data-i18n="bc.idx">Senior data scientist vision · Lead MLOps</span><span>2021 — 2022</span></p>
-          <h2 class="title">Baracoda, <em data-i18n="bc.t">lire la peau</em></h2>
-          <p class="lede" data-i18n="bc.p">J'ai conçu et développé un système d'IA d'analyse de la peau pour des appareils de santé : détecter le mélanome et suivre l'évolution d'autres affections cutanées sous lumière UV. J'ai défini la stratégie MLOps, le déploiement sur AWS, et noué des partenariats avec des dermatologues.</p>
-          <ul class="chips"><li data-i18n="bc.c1">Détection du mélanome</li><li data-i18n="bc.c2">Lumière UV</li><li>MLOps</li><li>AWS · Kubernetes</li></ul>
-          <a class="link" href="https://baracoda.com" target="_blank" rel="noopener">baracoda.com ↗</a>
         </article>
       </div>
     </section>
@@ -238,40 +273,11 @@
       </div>
     </section>
 
-    <!-- Projects intro -->
-    <section id="projets" class="scene scene-short" data-shape="galaxy" data-side="0">
-      <div class="wrap">
-        <div class="intro reveal">
-          <p class="kicker" data-i18n="pj.k">Projets</p>
-          <h2 class="title title-xl" data-i18n="pj.t">Des soins intensifs <em>au vide spatial</em></h2>
-          <p class="lede center" data-i18n="pj.p">Des projets que je raconte chacun sur son propre site, en 3D, à partir des documents, des mesures et des pièces d'origine.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Alveo -->
-    <section id="alveo" class="scene project" data-shape="lung" data-side="1" style="--accent:#4fe0c0;--accent2:#ff7a8a">
-      <div class="wrap">
-        <article class="card reveal">
-          <p class="kicker"><span class="idx">01</span><span data-i18n="al.k">Logiciel médical · réanimation · 2025 — 2026</span></p>
-          <h2 class="title">Alveo, <em data-i18n="al.t">lire la ventilation</em></h2>
-          <p class="lede" data-i18n="al.p">Une plateforme web d'analyse des enregistrements de tomographie par impédance électrique (EIT) des patients de réanimation. Elle lit les fichiers Dräger et SenTec, reconstruit les images du thorax, laisse le clinicien choisir ses cycles respiratoires, puis calcule surdistension et collapsus pour trouver la meilleure PEP d'un essai décrémental, selon la méthode de Costa (2009).</p>
-          <ul class="chips">
-            <li data-i18n="al.c1">Reconstruction d'images EIT</li>
-            <li data-i18n="al.c2">Sélection des cycles</li>
-            <li data-i18n="al.c3">Surdistension / collapsus</li>
-            <li data-i18n="al.c4">Interface web · CLI · API Python</li>
-          </ul>
-          <p class="soon"><span class="pulse-dot"></span><span data-i18n="al.soon">Le site d'Alveo est en préparation.</span></p>
-        </article>
-      </div>
-    </section>
-
     <!-- SUWAVE -->
-    <section id="suwave" class="scene project" data-shape="wave" data-side="-1" style="--accent:#ffb37a;--accent2:#ffd2a6">
-      <div class="wrap wrap-right">
+    <section id="suwave" class="scene project" data-shape="wave" data-side="1" style="--accent:#ffb37a;--accent2:#ffd2a6">
+      <div class="wrap">
         <article class="card reveal">
-          <p class="kicker"><span class="idx">02</span><span data-i18n="sw.k">Stage · Sherbrooke, Québec · été 2017</span></p>
+          <p class="kicker"><span class="idx" data-i18n="sw.idx">Stage</span><span data-i18n="sw.k">Sherbrooke, Québec · été 2017</span></p>
           <h2 class="title"><span data-i18n="sw.t1">SUWAVE,</span> <em data-i18n="sw.t2">prévoir la dérive</em></h2>
           <p class="lede" data-i18n="sw.p">SUWAVE est une aile volante solaire qui se pose sur les lacs pour recharger ses batteries. Au 3IT de l'Université de Sherbrooke, j'ai mesuré à quelle vitesse le vent la fait dériver et écrit le programme qui choisit où la poser pour qu'elle reste sur l'eau pendant toute sa recharge.</p>
           <dl class="kpis">
@@ -288,10 +294,10 @@
     </section>
 
     <!-- Ion thruster -->
-    <section id="ionique" class="scene project" data-shape="ion" data-side="1" style="--accent:#6fd6ff;--accent2:#8b7bff">
-      <div class="wrap">
+    <section id="ionique" class="scene project" data-shape="ion" data-side="-1" style="--accent:#6fd6ff;--accent2:#8b7bff">
+      <div class="wrap wrap-right">
         <article class="card reveal">
-          <p class="kicker"><span class="idx">03</span><span data-i18n="ion.k">TIPE de classe préparatoire · 2014 — 2016</span></p>
+          <p class="kicker"><span class="idx" data-i18n="ion.idx">TIPE</span><span data-i18n="ion.k">Classe préparatoire · 2014 — 2016</span></p>
           <h2 class="title"><span data-i18n="ion.t1">Propulseur</span> <em data-i18n="ion.t2">ionique</em></h2>
           <p class="lede" data-i18n="ion.p">Concevoir, imprimer en 3D et mesurer un propulseur électrostatique à grille pour nanosatellite, sous la cloche à vide d'un lycée. Le site rejoue le principe, le prototype tiré des fichiers SolidWorks d'origine et dix expériences de mesure.</p>
           <dl class="kpis">
@@ -353,7 +359,7 @@
             <p class="kicker" data-i18n="ab.k">À propos</p>
             <h2 class="title" data-i18n="ab.t">Ingénieur, <em>du modèle au matériel</em></h2>
             <p data-i18n="ab.p1">Diplômé de Centrale Paris (MSc en intelligence artificielle et informatique) et de Centrale Nantes (MSc en robotique), où j'ai présidé l'association d'ingénierie, j'ai commencé chez Airbus Defence and Space, à Portsmouth, sur l'optimisation des communications par satellite.</p>
-            <p data-i18n="ab.p2">J'ai ensuite été data scientist en vision chez Meero et Baracoda, cofondateur et CTO de Guardia, Head of AI d'AIVE, puis, en freelance avec AI Diligence depuis 2023, Head of AI pour Acolad et Ocus.</p>
+            <p data-i18n="ab.p2">J'ai ensuite été data scientist en vision chez Meero et Baracoda, cofondateur et CTO de Guardia, Head of AI d'AIVE, d'Acolad et d'Ocus, et Lead AI pour Bivwak!. Aujourd'hui, je suis freelance avec AI Diligence.</p>
             <p data-i18n="ab.p3">Hors écran : paramoteur, canyon, alpinisme, plongée, photo, et basse dans un groupe de rock.</p>
             <ul class="facts">
               <li><b>Centrale Paris</b><span data-i18n="ab.f1">MSc IA &amp; informatique</span></li>

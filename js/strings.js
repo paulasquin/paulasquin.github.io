@@ -6,7 +6,6 @@ export const STATIC_EN = {
   'nav.aria': 'Main navigation',
   'nav.ia': 'Freelance AI',
   'nav.career': 'Career',
-  'nav.projects': 'Projects',
   'nav.about': 'About',
   'nav.contact': 'Contact',
   'nav.lang': 'Language',
@@ -19,7 +18,7 @@ export const STATIC_EN = {
 
   'ia.k': 'Today · Freelance',
   'ia.t': 'Artificial intelligence, <em>from prototype to production</em>',
-  'ia.p': 'Head of AI at AIVE, Acolad and Ocus, former CTO of Guardia: I help companies and investors with their AI projects, under the AI Diligence banner.',
+  'ia.p': 'Freelance today, I help companies and investors with their AI projects under the AI Diligence banner, after being Head of AI at AIVE, Acolad and Ocus, and CTO of Guardia.',
   'ia.s1.t': 'AI engineering &amp; MLOps',
   'ia.s1.p': 'Vision and language models, inference pipelines, deployment and monitoring in production.',
   'ia.s2.t': 'AI stack due diligence',
@@ -36,28 +35,28 @@ export const STATIC_EN = {
   'mq.7': 'Architecture',
   'mq.8': 'Scalability',
 
-  'pj.k': 'Projects',
-  'pj.t': 'From intensive care <em>to the vacuum of space</em>',
-  'pj.p': 'Projects I tell each on its own site, in 3D, from the original documents, measurements and parts.',
   'tl.1': 'Ion thruster',
 
   'cta.visit': 'Visit the site',
 
   'cr.k': 'Career',
-  'cr.t': 'Seven years of AI <em>shipped to production</em>',
-  'cr.p': 'Data scientist, CTO, Head of AI: the teams and products that shaped my practice, from photo retouching to video editing, from skin to languages.',
-  'tl.since': 'since 2023',
+  'cr.t': 'Career <em>and projects</em>',
+  'cr.p': 'From an ion thruster to intensive care, from photo retouching to AI agents: the teams, products and projects that shaped my practice, newest first.',
+  'tl.now': 'today',
 
-  'ac.k': 'Freelance assignment · AI Diligence',
   'ac.t': 'AI for multilingual content',
   'ac.p': 'For this international multilingual content group, I led a team of engineers and PhDs that designed AI systems for text analysis, synthesis, question answering and contextual translation, deployed at scale in the cloud. I also built a document analysis AI hosted in a secure European cloud for a French institution.',
   'ac.k1': 'engineers and PhDs',
 
-  'oc.k': 'Freelance assignment · AI Diligence',
   'oc.t': 'images, augmented',
   'oc.p': 'At this photo and video company, I led the AI team that built tools to analyse, generate and edit images and videos, with agentic AI and vision transformers. I created, trained and deployed new models myself, and presented our expertise to clients.',
   'oc.k1': 'engineers in the team',
   'oc.c2': 'Agents',
+
+  'bw.t': 'an agent under tight security',
+  'bw.p': 'For Bivwak!, BNP Paribas’ startup incubator, I audited the tech stack, then designed and built an agentic AI augmented with RAG and function calling, under strict security constraints: ingesting PDFs, slide decks, web pages and podcasts, semantic chunking, passage enrichment. I also trained the junior staff and refined the project with the business experts.',
+  'bw.c1': 'Agents',
+  'bw.c3': 'Function calling',
 
   'av.t': 'video, edited by AI',
   'av.p': 'Leading a team of engineers and PhDs, I designed with them the AI video editing platform: understanding and editing video, text, audio and images. We integrated the first ChatGPT model as early as late 2022, fine-tuned our own models with LoRA, and took everything to production at scale on AWS.',
@@ -86,7 +85,8 @@ export const STATIC_EN = {
   'me.p': 'I built new AI models that improve photo quality hand in hand with retouchers. I deployed them on our servers, developed the companion app, and trained the teams on the tool, from Paris to Bengaluru and New York.',
   'me.k1': 'teams trained: Paris, Bengaluru, New York',
 
-  'ion.k': 'Preparatory-class research project · 2014 — 2016',
+  'ion.idx': 'Research project',
+  'ion.k': 'Preparatory class · 2014 — 2016',
   'ion.t1': 'Ion',
   'ion.t2': 'thruster',
   'ion.p': 'Designing, 3D-printing and measuring a gridded electrostatic thruster for nanosatellites, under a high-school vacuum bell jar. The site replays the principle, the prototype rebuilt from the original SolidWorks files, and ten measurement experiments.',
@@ -95,7 +95,8 @@ export const STATIC_EN = {
   'ion.k3': 'specific impulse',
   'ion.alt': 'The ion thruster site: a CubeSat above the Earth at night',
 
-  'sw.k': 'Internship · Sherbrooke, Québec · summer 2017',
+  'sw.idx': 'Internship',
+  'sw.k': 'Sherbrooke, Québec · summer 2017',
   'sw.t1': 'SUWAVE,',
   'sw.t2': 'predicting the drift',
   'sw.p': 'SUWAVE is a solar flying wing that lands on lakes to recharge its batteries. At the 3IT of the Université de Sherbrooke, I measured how fast the wind makes it drift and wrote the program that chooses where to land so that it stays on the water for its whole charge.',
@@ -131,7 +132,7 @@ export const STATIC_EN = {
   'ab.k': 'About',
   'ab.t': 'Engineer, <em>from model to hardware</em>',
   'ab.p1': 'A graduate of Centrale Paris (MSc in artificial intelligence and computer science) and Centrale Nantes (MSc in robotics), where I chaired the engineering association, I started at Airbus Defence and Space, in Portsmouth, optimising satellite communications.',
-  'ab.p2': 'I then was a computer vision data scientist at Meero and Baracoda, co-founder and CTO of Guardia, Head of AI at AIVE, then, freelancing with AI Diligence since 2023, Head of AI for Acolad and Ocus.',
+  'ab.p2': 'I then was a computer vision data scientist at Meero and Baracoda, co-founder and CTO of Guardia, Head of AI at AIVE, Acolad and Ocus, and Lead AI for Bivwak!. Today, I am a freelancer with AI Diligence.',
   'ab.p3': 'Off screen: paramotor, canyoning, mountaineering, diving, photography, and bass in a rock band.',
   'ab.f1': 'MSc AI &amp; computer science',
   'ab.f2': 'MSc robotics',

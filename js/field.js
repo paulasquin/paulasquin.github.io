@@ -417,7 +417,42 @@ function pool(n) {
   return s;
 }
 
-const BUILDERS = { orb, galaxy, net, ion, wave, lung, lens, skin, film, docs, patches, pool };
+
+// Bivwak!: an agent at the core, its tools on a ring, documents orbiting, all inside a cage.
+function agent(n) {
+  const s = new Shape(n), r = rng(13);
+  const core = C('#e9fbff'), spoke = C('#4fe0c0'), paper = C('#cfd6ff'), cage = C('#4fe0c0');
+  const toolC = ['#6fd6ff', '#a78bff', '#ffb37a', '#4fe0c0', '#ff7a8a', '#ffd2a6'].map((h) => C(h));
+  const tools = toolC.map((_, k) => { const a = (k / 6) * Math.PI * 2 + 0.3; return new THREE.Vector3(Math.cos(a) * 1.35, Math.sin(k * 1.7) * 0.18, Math.sin(a) * 1.35); });
+  const nCore = Math.floor(n * 0.1), nTools = Math.floor(n * 0.15), nSpokes = Math.floor(n * 0.15), nDocs = Math.floor(n * 0.14);
+  const ball = (c, rad) => { const u = r() * 2 - 1, th = r() * Math.PI * 2, q = Math.sqrt(1 - u * u), d = rad * Math.cbrt(r()); return [c.x + q * Math.cos(th) * d, c.y + u * d, c.z + q * Math.sin(th) * d]; };
+  for (let i = 0; i < nCore; i++) { const [x, y, z] = ball(new THREE.Vector3(), 0.32); s.push(x, y, z, K.NODE, r(), core.clone().multiplyScalar(0.5 + r() * 0.5)); }
+  for (let i = 0; i < nTools; i++) {
+    const k = Math.floor(r() * 6), t = tools[k], h = 0.11;
+    s.push(t.x + (r() * 2 - 1) * h, t.y + (r() * 2 - 1) * h, t.z + (r() * 2 - 1) * h, K.NODE, r(), toolC[k].clone().multiplyScalar(0.6 + r() * 0.4));
+  }
+  for (let i = 0; i < nSpokes; i++) {
+    const t = tools[Math.floor(r() * 6)], u = 0.2 + r() * 0.8;
+    s.push(t.x * u, t.y * u, t.z * u, K.EDGE, u, spoke.clone().multiplyScalar(0.25 + r() * 0.3));
+  }
+  for (let i = 0; i < nDocs; i++) {
+    const k = Math.floor(r() * 9), a = (k / 9) * Math.PI * 2, R = 2.15, w = 0.16, hgt = 0.22;
+    const u = (r() - 0.5) * w, v = (r() - 0.5) * hgt, onEdge = Math.abs(u) > w * 0.42 || Math.abs(v) > hgt * 0.44 || Math.abs((v / hgt * 8) % 1) < 0.15;
+    if (!onEdge) { i--; continue; }
+    s.push(Math.cos(a) * R - Math.sin(a) * u, v + Math.sin(k * 2.3) * 0.25, Math.sin(a) * R + Math.cos(a) * u, K.ORBIT, 0, paper.clone().multiplyScalar(0.35 + r() * 0.3));
+  }
+  while (!s.full) {
+    // Cage: meridians and parallels of a sphere.
+    const u = r() * 2 - 1, th = r() * Math.PI * 2, lat = Math.asin(u), R = 1.95;
+    const onMer = Math.abs(((th / (Math.PI / 6)) % 1) - 0.5) > 0.47, onPar = Math.abs(((lat / (Math.PI / 8) + 8) % 1) - 0.5) > 0.47;
+    if (!onMer && !onPar) continue;
+    const q = Math.sqrt(1 - u * u);
+    s.push(Math.cos(th) * q * R, u * R, Math.sin(th) * q * R, K.STILL, 0, cage.clone().multiplyScalar(0.12 + r() * 0.12));
+  }
+  return s;
+}
+
+const BUILDERS = { orb, galaxy, net, ion, wave, lung, lens, skin, film, docs, patches, pool, agent };
 
 // How each shape is presented: tilt, and an optional slow sway.
 const VIEW = {
@@ -433,6 +468,7 @@ const VIEW = {
   docs: { rx: 0.08, ry: -0.2, rz: 0, scale: 0.85, sway: 0.15 },
   patches: { rx: -0.12, ry: 0.4, rz: 0.03, scale: 0.95, sway: 0.2 },
   pool: { rx: 0.5, ry: -0.35, rz: 0, scale: 0.95, sway: 0.2 },
+  agent: { rx: 0.32, ry: 0, rz: 0.1, scale: 0.9, sway: 0.4 },
 };
 
 /* ---------------- shaders ---------------- */
