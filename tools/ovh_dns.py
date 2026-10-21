@@ -1,7 +1,7 @@
-"""Point paulasquin.com (apex + www) at GitHub Pages in the OVH zone.
+"""Point paulasquin.com (apex + www, and me. where the site lives) at GitHub Pages in the OVH zone.
 
 Removes OVH's placeholder markers (apex -> www redirect, "site en construction" page),
-points www at paulasquin.github.io. and adds the GitHub Pages A/AAAA records on the apex.
+points www and me at paulasquin.github.io. and adds the GitHub Pages A/AAAA records on the apex.
 MX and the other subdomains are left untouched. Idempotent.
 
     bws-env run ovh -- uv run -q --with ovh python -I tools/ovh_dns.py
@@ -25,6 +25,9 @@ for rid, r in recs.items():
         print("www CNAME -> paulasquin.github.io.")
 
 have = {(r["subDomain"], r["fieldType"], r["target"]) for r in recs.values()}
+if ("me", "CNAME", "paulasquin.github.io.") not in have:
+    c.post(f"/domain/zone/{z}/record", fieldType="CNAME", subDomain="me", target="paulasquin.github.io.", ttl=3600)
+    print("me CNAME -> paulasquin.github.io.")
 for kind, ips in (("A", ["185.199.108.153", "185.199.109.153", "185.199.110.153", "185.199.111.153"]),
                   ("AAAA", ["2606:50c0:8000::153", "2606:50c0:8001::153", "2606:50c0:8002::153", "2606:50c0:8003::153"])):
     for ip in ips:
