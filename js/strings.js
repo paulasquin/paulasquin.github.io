@@ -1,7 +1,7 @@
 // English for the elements of index.html tagged data-i18n / data-i18n-aria / data-i18n-alt.
 export const STATIC_EN = {
   'meta.title': 'Paul Asquin — Artificial intelligence engineer',
-  'meta.description': 'Paul Asquin, Head of AI and artificial intelligence freelancer: Meero, Baracoda, Guardia, AIVE, Acolad, Ocus, and his projects: Alveo, SUWAVE, ion thruster.',
+  'meta.description': 'Paul Asquin, Head of AI and artificial intelligence freelancer: Meero, Baracoda, Guardia, AIVE, Acolad, Ocus, and his projects: Siflo, Alveo, SUWAVE, ion thruster.',
 
   'nav.aria': 'Main navigation',
   'nav.ia': 'Freelance AI',
@@ -105,6 +105,17 @@ export const STATIC_EN = {
   'sw.k3': 'drift trials on a lake',
   'sw.alt': 'The SUWAVE site: a Québec lake at sunset',
 
+  'sf.idx': 'App',
+  'sf.k': 'Canyoning · climbing · caving · 2026',
+  'sf.t': 'staying in touch outdoors, even without signal',
+  'sf.p': 'I designed and built Siflo for canyoning, climbing and caving trips, where voices and whistles no longer carry. Messages, photos, voice notes, whistle signals and SOS go over the internet when someone has signal, and otherwise from phone to phone over Bluetooth and nearby Wi-Fi, all the way to teammates out of sight. The app is free and encrypted, with no account and no ads.',
+  'sf.c1': 'Phone-to-phone relay',
+  'sf.c2': 'Bluetooth · nearby Wi-Fi',
+  'sf.c3': 'Encrypted messages',
+  'sf.c4': '“Received” and “seen” receipts',
+  'sf.alt': 'The Siflo site: an orange rock canyon with a group moving through it',
+  'sf.play': 'Get it on Google Play',
+
   'al.k': 'Medical software · intensive care · 2025–2026',
   'al.t': 'analysing lung ventilation',
   'al.p': 'A web platform that analyses electrical impedance tomography (EIT) recordings of intensive-care patients. It reads files from Dräger and SenTec devices, reconstructs lung ventilation images and lets the clinician choose the respiratory cycles to study. It then computes overdistension and collapse to find the optimal PEEP during a decremental PEEP titration, following the Costa (2009) method.',
@@ -118,8 +129,6 @@ export const STATIC_EN = {
   'also.t': 'Apps <em>and talks</em>',
   'r.tag': 'Android app',
   'r.p': 'Edit photos on Android with Lightroom’s adjustments: the same sliders, a close rendering, .xmp presets. Everything is processed on the phone.',
-  's.tag': 'Android app',
-  's.p': 'Pass whistle signals and messages within a group, from phone to phone, even without a network, when canyoning, climbing or caving.',
   'md.1k': 'Talk',
   'md.1t': 'Keeping a multimodal RAG confidential',
   'md.2k': 'Open source',

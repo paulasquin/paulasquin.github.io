@@ -452,7 +452,38 @@ function agent(n) {
   return s;
 }
 
-const BUILDERS = { orb, galaxy, net, ion, wave, lung, lens, skin, film, docs, patches, pool, agent };
+// Siflo: a winding canyon, the group's phones along the river, the message hopping from one to the next.
+function canyon(n) {
+  const s = new Shape(n), r = rng(14);
+  const rock = C('#ff6a00'), rockDark = C('#7a2a10'), water = C('#2f7fd0'), glint = C('#bff0ff'), phone = C('#fff1e0'), link = C('#ffb37a');
+  const X = 2.3, floor = -0.55, bend = (x) => Math.sin(x * 1.3 + 0.4) * 0.38;
+  const nWalls = Math.floor(n * 0.4), nPhones = Math.floor(n * 0.1), nLinks = Math.floor(n * 0.14);
+  for (let i = 0; i < nWalls; i++) {
+    // Rock strata: lines along each wall, stepping outwards as they rise.
+    const x = (r() * 2 - 1) * X, side = r() < 0.5 ? -1 : 1, layer = r() < 0.8;
+    const v = layer ? (Math.floor(r() * 6) + 0.5 + Math.sin(x * 2.3 + side) * 0.25) / 6 : r();
+    const z = bend(x) + side * (0.42 + v * 0.4 + Math.sin(x * 5 + v * 9 + side) * 0.04);
+    const c = lerpC(rockDark, rock, 0.3 + v * 0.7).multiplyScalar((layer ? 0.55 : 0.2) + r() * 0.3);
+    s.push(x, floor + v * 1.2, z, K.STILL, 0, c);
+  }
+  const phones = [-1.9, -1.05, -0.2, 0.75, 1.75].map((x, k) => new THREE.Vector3(x, floor + 0.12 + (k % 2) * 0.05, bend(x) + (k % 2 ? 0.12 : -0.1)));
+  for (let i = 0; i < nPhones; i++) {
+    const p = phones[Math.floor(r() * phones.length)], w = 0.05, h = 0.09;
+    s.push(p.x + (r() * 2 - 1) * w, p.y + (r() * 2 - 1) * h, p.z + (r() * 2 - 1) * 0.015, K.NODE, r(), phone.clone().multiplyScalar(0.55 + r() * 0.45));
+  }
+  for (let i = 0; i < nLinks; i++) {
+    const k = Math.floor(r() * (phones.length - 1)), a = phones[k], b = phones[k + 1], t = r();
+    const p = a.clone().lerp(b, t);
+    s.push(p.x, p.y + Math.sin(t * Math.PI) * 0.32, p.z, K.EDGE, t, link.clone().multiplyScalar(0.3 + r() * 0.35));
+  }
+  while (!s.full) {
+    const x = (r() * 2 - 1) * X, z = bend(x) + (r() * 2 - 1) * 0.3;
+    s.push(x, floor, z, K.WAVE, r(), lerpC(water, glint, Math.pow(r(), 6)).multiplyScalar(0.25 + r() * 0.3));
+  }
+  return s;
+}
+
+const BUILDERS = { orb, galaxy, net, ion, wave, lung, lens, skin, film, docs, patches, pool, agent, canyon };
 
 // How each shape is presented: tilt, and an optional slow sway.
 const VIEW = {
@@ -469,6 +500,7 @@ const VIEW = {
   patches: { rx: -0.12, ry: 0.4, rz: 0.03, scale: 0.95, sway: 0.2 },
   pool: { rx: 0.5, ry: -0.35, rz: 0, scale: 0.95, sway: 0.2 },
   agent: { rx: 0.32, ry: 0, rz: 0.1, scale: 0.9, sway: 0.4 },
+  canyon: { rx: 0.42, ry: -0.3, rz: 0, scale: 0.95, sway: 0.2 },
 };
 
 /* ---------------- shaders ---------------- */
