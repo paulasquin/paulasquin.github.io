@@ -169,7 +169,7 @@ main, .topnav { position: relative; z-index: 2; }
 .service h3 { margin: 0 0 4px; font: 500 16.5px/1.35 var(--sans); }
 .service p { margin: 0; color: var(--muted); font-size: 15px; }
 
-.kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0 0 28px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 18px 0; margin: 0 0 28px; }
 .kpis div { padding: 2px 22px 2px 16px; border-left: 1px solid var(--line); }
 .kpis dt { font: 500 10.5px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
 .kpis dd { margin: 0; font: 500 clamp(22px, 2.1vw, 30px)/1.1 var(--display); letter-spacing: -.02em; white-space: nowrap; }

@@ -373,7 +373,7 @@ function patches(n) {
   return s;
 }
 
-// Guardia: a pool watched by a camera; the adult and the child it tells apart.
+// GuardiaPool: a pool watched by a camera; the adult and the child it tells apart.
 function pool(n) {
   const s = new Shape(n), r = rng(12);
   const water = C('#2f7fd0'), glint = C('#bff0ff'), coping = C('#e9ecff'), cone = C('#a78bff'), adult = C('#4fe0c0'), child = C('#ff9a5a');

@@ -1,7 +1,7 @@
 // English for the elements of index.html tagged data-i18n / data-i18n-aria / data-i18n-alt.
 export const STATIC_EN = {
   'meta.title': 'Paul Asquin — Artificial intelligence engineer',
-  'meta.description': 'Paul Asquin, Head of AI and artificial intelligence freelancer: Meero, Baracoda, Guardia, AIVE, Acolad, Ocus, and his projects: Siflo, Alveo, SUWAVE, ion thruster.',
+  'meta.description': 'Paul Asquin, Head of AI and artificial intelligence freelancer: Meero, Baracoda, GuardiaPool, AIVE, Acolad, Ocus, and his projects: Siflo, Alveo, SUWAVE, ion thruster.',
 
   'nav.aria': 'Main navigation',
   'nav.ia': 'Freelance AI',
@@ -11,14 +11,14 @@ export const STATIC_EN = {
   'nav.lang': 'Language',
 
   'hero.eyebrow': 'Head of AI · Freelance · Founder of AI Diligence',
-  'hero.sub': 'Since 2019, I have designed artificial intelligence systems (vision, language, video) and taken them to production, at Meero, AIVE, Guardia and Acolad. Here is my career and the projects that shaped me.',
+  'hero.sub': 'Since 2019, I have designed artificial intelligence systems (vision, language, video) and taken them to production, at Meero, AIVE, GuardiaPool and Acolad. Here is my career and the projects that shaped me.',
   'hero.cta1': 'See my career',
   'hero.cta2': 'Work with me',
   'hero.scroll': 'Scroll',
 
   'ia.k': 'Today · AI Diligence',
   'ia.t': 'Leading and auditing <em>AI projects</em>',
-  'ia.p': 'My missions go through AI Diligence, the practice I set up in 2023: AI project leadership, engineering and due diligence, for companies and investors. Before that, I was Head of AI at AIVE, Acolad and Ocus, and CTO of Guardia.',
+  'ia.p': 'My missions go through AI Diligence, the practice I set up in 2023: AI project leadership, engineering and due diligence, for companies and investors. Before that, I was Head of AI at AIVE, Acolad and Ocus, and CTO of GuardiaPool.',
   'ia.s1.t': 'AI project leadership',
   'ia.s1.p': 'Scoping, hiring, prioritising, then shipping an AI project that truly meets the business needs.',
   'ia.s2.t': 'AI engineering &amp; MLOps',
@@ -46,11 +46,11 @@ export const STATIC_EN = {
 
   'ac.t': 'AI for languages',
   'ac.p': 'Within this international group specialised in multilingual content, I led a team of engineers and PhDs. Together, we designed AI systems for text analysis, summarisation, question answering and contextual translation, deployed at scale in the cloud. I also built a document analysis AI, hosted in a secure European cloud, for a French institution.',
-  'ac.k1': 'engineers and PhDs',
+  'ac.k1': 'engineers and PhDs I managed',
 
   'oc.t': 'images reworked by AI',
   'oc.p': 'At this photo and video company, I led the AI team that built tools to analyse, generate and retouch images and videos, relying on agentic AI and vision transformers. I designed, trained and deployed new models myself, and presented our expertise in many client meetings.',
-  'oc.k1': 'engineers in the team',
+  'oc.k1': 'engineers I managed',
   'oc.c2': 'Agents',
 
   'bw.t': 'an AI agent under tight security',
@@ -59,16 +59,14 @@ export const STATIC_EN = {
   'bw.c3': 'Function calling',
 
   'av.t': 'AI-powered video editing',
-  'av.p': 'I led a team of engineers and PhDs and took a direct part in designing our AI video editing platform, which understands and reworks video, text, audio and images. We integrated the first version of ChatGPT as early as late 2022, fine-tuned our own models with LoRA, then took the whole platform to production at scale on AWS.',
-  'av.k1': 'engineers and PhDs',
-  'av.k2': 'first version of ChatGPT integrated',
-  'av.k2v': 'late 2022',
+  'av.p': 'I led a team of engineers and PhDs and took a direct part in designing our AI video editing platform, which understands and reworks video, text, audio and images. We integrated our first LLMs as early as 2022, fine-tuned our own models with LoRA, then took the whole platform to production at scale on AWS.',
+  'av.k1': 'engineers and PhDs I managed',
+  'av.k2': 'first LLM integration',
   'av.l': 'Interview: Head of AI at AIVE ↗',
 
   'gu.idx': 'Co-founder &amp; CTO',
   'gu.t': 'protecting children around the pool',
   'gu.p': 'With my brother, I created an AI-based device to prevent children from drowning in private pools: an autonomous camera tells children from adults and raises the alarm when a child approaches the water alone. Everything is processed on the device, with nothing sent to the cloud, under tight latency constraints. Beyond the tech, I handled promotion, fundraising and administration.',
-  'gu.k1': 'images sent to the cloud',
   'gu.c1': 'On-device AI',
   'gu.c2': 'Stereo camera',
   'gu.c3': 'Pose estimation',
@@ -83,7 +81,6 @@ export const STATIC_EN = {
   'me.idx': 'Computer vision data scientist',
   'me.t': 'enhancing photos',
   'me.p': 'I designed new AI models to improve photo quality, alongside the retouchers’ work. I deployed them on our servers, built the companion app and trained the teams to use it in Paris, Bengaluru and New York.',
-  'me.k1': 'teams trained: Paris, Bengaluru, New York',
 
   'ion.idx': 'Research project',
   'ion.k': 'Preparatory class · 2014–2016',
@@ -136,12 +133,12 @@ export const STATIC_EN = {
   'md.3t': 'Head of AI at AIVE: designing and leading AI for video editing',
   'md.4t': 'AI applied to photography',
   'md.5k': 'Press',
-  'md.5t': 'Guardia, the anti-drowning pool camera',
+  'md.5t': 'GuardiaPool, the anti-drowning pool camera',
 
   'ab.k': 'About',
   'ab.t': 'Engineer, <em>from algorithm to hardware</em>',
   'ab.p1': 'I graduated from Centrale Paris (MSc in artificial intelligence and computer science) and Centrale Nantes (MSc in robotics), where I chaired the school’s engineering association. I started my career at Airbus Defence and Space, in Portsmouth, optimising satellite communications.',
-  'ab.p2': 'I then was a computer vision data scientist at Meero, then at Baracoda, co-founder and CTO of Guardia, Head of AI at AIVE, Acolad and Ocus, and Lead AI for Bivwak! I am now a freelancer with AI Diligence.',
+  'ab.p2': 'I then was a computer vision data scientist at Meero, then at Baracoda, co-founder and CTO of GuardiaPool, Head of AI at AIVE, Acolad and Ocus, and Lead AI for Bivwak! I am now a freelancer with AI Diligence.',
   'ab.p3': 'In my free time: paramotor, canyoning, mountaineering, diving, photography, and bass in a rock band.',
   'ab.f1': 'MSc AI &amp; computer science',
   'ab.f2': 'MSc robotics',
